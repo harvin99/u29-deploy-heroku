@@ -1,0 +1,14 @@
+extend ../layout/common.pug 
+block content
+    h1.text-center This is shop page 
+    p.text-center= shop.nameShop
+    if user && user.shopId === shop._id.toString()
+        a.btn.btn-secondary.mb-3.ml-4(href='/shops/' + shop._id + '/books/addbook') Add book into shop
+    .container.d-flex.flex-wrap
+        each book in list
+            .card.mr-3.mb-3(style='width:250px')
+                img.card-img-top(src= book.coverUrl ? book.coverUrl : book.image, alt='Card image', style='width:100%')
+                .card-body
+                    h4.card-title= book.title
+                    p.card-text= book.description
+                    a.btn.btn-primary(href='/shops/'+ shop._id + '/books/' + book._id) Add to cart

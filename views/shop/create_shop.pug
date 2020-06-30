@@ -1,0 +1,9 @@
+extend ../layout/common.pug 
+block content
+    h1.text-center This is create shop page
+    .container
+        form(action='', method='POST')
+            .form-group
+                label(for='nameShop') Name Shop
+                input.form-control(type='text', name='nameShop')
+            button.btn.btn-primary(type="submit") Create Shop
