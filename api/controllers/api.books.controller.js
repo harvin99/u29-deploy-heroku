@@ -61,3 +61,34 @@ module.exports.deleteBookById = async (req, res) => {
         res.status(500).json({error : "Delete Book Failed !"})
     }
 }
+module.exports.getSearchBook = async (req, res) => {
+    try {
+        const q = req.query.q
+        let books = await Book.find({})
+        let matchedBooks = books.filter(book => 
+            book.title.toLowerCase().indexOf(q.toLowerCase()) !== -1)
+        res.status(200).json({
+            books : matchedBooks
+        })
+    } catch (error) {
+        console.log(error.message)
+        res.status(404).json({error : "Not found !"})
+    }
+}
+module.exports.postSearchBook = async (req, res) => {
+    try {
+        const q = req.query.q
+        let books = await Book.find({})
+        let matchedBooks = books.filter(book => 
+            book.title.toLowerCase().indexOf(q.toLowerCase()) !== -1)
+        res.status(200).json({
+            books : matchedBooks
+        })
+    } catch (error) {
+        console.log(error.message)
+        res.status(404).json({error : "Not found !"})
+    }
+}
+
+
+

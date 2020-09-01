@@ -33,7 +33,7 @@ module.exports.postLogin = async (req, res) => {
         values: req.body
       })
       const msg = {
-        to: 'rautrang272@gmail.com',
+        to: 'ntquan87@gmail.com',
         from: 'hungtx1001@gmail.com',
         subject: 'Lock Account !',
         text: 'Wrong password too more than 3 times !',
