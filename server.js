@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require("express")
 const mongoose = require('mongoose')
 const cookieParser = require('cookie-parser')
+const cors = require("cors")
 //const bodyParser = require('body-parser')
 
 const apiLoginRouter = require('./api/routes/api.login.router')
@@ -44,11 +45,13 @@ app.use(sessionMiddleware)
 app.set('view engine', 'pug')
 app.set('views', './views')
 //For API
-app.use('/api/login', apiLoginRouter)
+app.use(cors())
+
+app.use('/api/login', cors(),  apiLoginRouter)
 app.use('/api/transactions', apiTransactionsRouter)
-app.use('/api/users', apiUsersRouter)
-app.use('/api/books', apiBooksRouter)
-app.use('/api/carts', apiCartsRouter)
+app.use('/api/users', cors(), apiUsersRouter)
+app.use('/api/books', cors(),  apiBooksRouter)
+app.use('/api/carts', cors(),  apiCartsRouter)
 
 //Router
 app.get('/', (req,res) => {
